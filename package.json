@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "沉浸式语言学习 Chrome 插件 - 在日常浏览中自然习得语言",
   "scripts": {
-    "build": "node scripts/build.js",
+    "dev": "vite -c vite.config.ui.js",
+    "build:ui": "vite build -c vite.config.ui.js",
+    "build:content": "vite build -c vite.config.content.js",
+    "postbuild": "node scripts/post-build.js",
+    "build": "npm run build:ui && npm run build:content && npm run postbuild",
+    "build:old": "node scripts/build.js",
     "watch": "node scripts/build.js --watch"
   },
   "keywords": [
@@ -14,5 +19,7 @@
   ],
   "author": "",
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "vite": "^7.3.0"
+  }
 }
