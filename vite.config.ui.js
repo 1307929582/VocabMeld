@@ -17,6 +17,8 @@ export default defineConfig({
         popup: resolve(__dirname, 'src/popup.html'),
         options: resolve(__dirname, 'src/options.html'),
         dashboard: resolve(__dirname, 'src/dashboard.html'),
+        review: resolve(__dirname, 'src/review.html'),
+        importExport: resolve(__dirname, 'src/import-export.html'),
         background: resolve(__dirname, 'src/js/background.js'),
       },
       output: {

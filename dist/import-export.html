@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VocabMeld - 导入导出</title>
+  <script type="module" crossorigin src="./js/importExport.js"></script>
+  <link rel="modulepreload" crossorigin href="./js/chunks/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./js/chunks/storage-DOvsNEMd.js">
+  <link rel="stylesheet" crossorigin href="./assets/commercial-utKeKVah.css">
+</head>
+<body>
+  <div class="io-container">
+    <header>
+      <h1>📦 数据管理</h1>
+      <button id="theme-toggle-io" class="btn btn--secondary">🌙</button>
+    </header>
+
+    <section class="io-section">
+      <div class="io-card">
+        <h3>📥 导入词汇</h3>
+        <p>支持JSON和CSV格式</p>
+
+        <div class="drop-zone" id="drop-zone">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <p>拖拽文件到此处，或点击选择</p>
+          <input type="file" id="file-input" accept=".json,.csv" class="hidden">
+          <button class="btn btn--primary" id="select-file-btn">选择文件</button>
+        </div>
+
+        <div id="import-preview" class="import-preview hidden">
+          <h4>预览</h4>
+          <div id="preview-content"></div>
+          <div class="import-actions">
+            <button class="btn btn--secondary" id="cancel-import-btn">取消</button>
+            <button class="btn btn--primary" id="confirm-import-btn">确认导入</button>
+          </div>
+        </div>
+
+        <div id="import-result" class="import-result hidden"></div>
+      </div>
+
+      <div class="io-card">
+        <h3>📤 导出词汇</h3>
+        <p>下载你的学习数据</p>
+
+        <div class="export-options">
+          <div class="export-option">
+            <label>
+              <input type="checkbox" id="export-learned" checked>
+              <span>已学会词汇 (<span id="export-learned-count">0</span>)</span>
+            </label>
+          </div>
+          <div class="export-option">
+            <label>
+              <input type="checkbox" id="export-memorize" checked>
+              <span>需记忆词汇 (<span id="export-memorize-count">0</span>)</span>
+            </label>
+          </div>
+          <div class="export-option">
+            <label>
+              <input type="checkbox" id="export-cache">
+              <span>缓存词汇 (<span id="export-cache-count">0</span>)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="export-actions">
+          <button class="btn btn--primary" id="export-json-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            导出为 JSON
+          </button>
+          <button class="btn btn--secondary" id="export-csv-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            导出为 CSV
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

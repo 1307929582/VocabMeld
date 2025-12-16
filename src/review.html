@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VocabMeld - 复习模式</title>
+  <link rel="stylesheet" href="./css/commercial.css">
+  <link rel="stylesheet" href="./css/review.css">
+</head>
+<body>
+  <div class="review-container">
+    <header class="review-header">
+      <h1>📚 复习模式</h1>
+      <div class="review-stats">
+        <span>今日复习: <strong id="review-today-count">0</strong></span>
+        <span>剩余: <strong id="review-remaining">0</strong></span>
+      </div>
+      <button id="theme-toggle-review" class="btn btn--secondary">🌙</button>
+    </header>
+
+    <div class="flashcard-container" id="flashcard-container">
+      <div class="flashcard" id="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="card-difficulty" id="card-difficulty">B2</div>
+            <div class="card-word" id="card-word">Loading...</div>
+            <div class="card-hint">点击卡片翻转</div>
+          </div>
+          <div class="flashcard-back">
+            <div class="card-translation" id="card-translation">翻译</div>
+            <div class="card-phonetic" id="card-phonetic">[发音]</div>
+            <div class="card-context">上下文示例</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard-controls">
+        <button class="btn btn--danger" id="btn-hard">
+          <span>😰</span>
+          <span>困难</span>
+          <kbd>1</kbd>
+        </button>
+        <button class="btn btn--warning" id="btn-good">
+          <span>🤔</span>
+          <span>一般</span>
+          <kbd>2</kbd>
+        </button>
+        <button class="btn btn--success" id="btn-easy">
+          <span>😊</span>
+          <span>简单</span>
+          <kbd>3</kbd>
+        </button>
+      </div>
+
+      <div class="review-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-text">
+          <span id="progress-current">0</span> / <span id="progress-total">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-empty hidden" id="review-empty">
+      <div class="empty-icon">🎉</div>
+      <h2>太棒了！</h2>
+      <p>今天的复习任务已完成</p>
+      <button class="btn btn--primary" onclick="window.close()">关闭</button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/review.js"></script>
+</body>
+</html>
