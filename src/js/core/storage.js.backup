@@ -248,11 +248,18 @@ class StorageService {
     chrome.storage.onChanged.addListener(listener);
     return () => chrome.storage.onChanged.removeListener(listener);
   }
+}
+
+// 导出单例
+export const storage = new StorageService();
+export default storage;
+
 
   // ============ API Profiles 管理 ============
 
   /**
    * 获取所有API配置
+   * @returns {Promise<Array>}
    */
   async getApiProfiles() {
     const result = await this.get('apiProfiles');
@@ -261,6 +268,8 @@ class StorageService {
 
   /**
    * 保存API配置列表
+   * @param {Array} profiles
+   * @returns {Promise<void>}
    */
   async setApiProfiles(profiles) {
     await this.set({ apiProfiles: profiles });
@@ -268,6 +277,8 @@ class StorageService {
 
   /**
    * 添加或更新API配置
+   * @param {object} profile - API配置对象
+   * @returns {Promise<void>}
    */
   async upsertApiProfile(profile) {
     const profiles = await this.getApiProfiles();
@@ -284,15 +295,27 @@ class StorageService {
 
   /**
    * 删除API配置
+   * @param {string} profileId
+   * @returns {Promise<void>}
    */
   async deleteApiProfile(profileId) {
     const profiles = await this.getApiProfiles();
     const filtered = profiles.filter(p => p.id !== profileId);
     await this.setApiProfiles(filtered);
+
+    // 同时删除对应的API Key
+    const keyData = await this.getLocal(['apiKeys']);
+    const apiKeys = keyData.apiKeys || {};
+    const profile = profiles.find(p => p.id === profileId);
+    if (profile && profile.apiKeyRef) {
+      delete apiKeys[profile.apiKeyRef];
+      await this.setLocal({ apiKeys });
+    }
   }
 
   /**
    * 获取API路由配置
+   * @returns {Promise<object>}
    */
   async getApiRouting() {
     const result = await this.get('apiRouting');
@@ -301,13 +324,17 @@ class StorageService {
 
   /**
    * 保存API路由配置
+   * @param {object} routing
+   * @returns {Promise<void>}
    */
   async setApiRouting(routing) {
     await this.set({ apiRouting: routing });
   }
 
   /**
-   * 获取API Key
+   * 获取API Key记录
+   * @param {string} keyRef - Key ID
+   * @returns {Promise<string|null>}
    */
   async getApiKey(keyRef) {
     if (!keyRef) return null;
@@ -318,6 +345,10 @@ class StorageService {
 
   /**
    * 保存API Key
+   * @param {string} keyRef - Key ID
+   * @param {string} key - API Key
+   * @param {string} provider - Provider ID
+   * @returns {Promise<void>}
    */
   async setApiKey(keyRef, key, provider) {
     const data = await this.getLocal(['apiKeys']);
@@ -336,6 +367,8 @@ class StorageService {
 
   /**
    * 获取Profile健康状态
+   * @param {string} profileId
+   * @returns {Promise<object|null>}
    */
   async getProfileHealth(profileId) {
     const data = await this.getLocal(['profileHealth']);
@@ -345,6 +378,9 @@ class StorageService {
 
   /**
    * 更新Profile健康状态
+   * @param {string} profileId
+   * @param {object} healthData
+   * @returns {Promise<void>}
    */
   async updateProfileHealth(profileId, healthData) {
     const data = await this.getLocal(['profileHealth']);
@@ -359,8 +395,3 @@ class StorageService {
     await this.setLocal({ profileHealth: health });
   }
 }
-
-// 导出单例
-export const storage = new StorageService();
-export default storage;
-
