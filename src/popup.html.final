@@ -4,17 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VocabMeld</title>
-  <script type="module" crossorigin src="./js/popup.js"></script>
-  <link rel="modulepreload" crossorigin href="./js/chunks/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="./js/chunks/storage-DOvsNEMd.js">
-  <link rel="stylesheet" crossorigin href="./assets/popup-BvB4k6Sc.css">
+  <link rel="stylesheet" href="./css/popup.css">
 </head>
 <body>
   <div class="popup-container">
     <!-- 头部 -->
     <header class="popup-header">
       <div class="logo-section">
-        <img src="./assets/icon48-DzTbct8e.png" alt="VocabMeld" class="logo">
+        <img src="../public/icons/icon48.png" alt="VocabMeld" class="logo">
         <div class="title-section">
           <h1>VocabMeld</h1>
           <span class="subtitle">沉浸式语言学习</span>
@@ -84,17 +81,6 @@
     </section>
 
     <!-- 快捷提示 -->
-
-    <!-- 快捷入口 -->
-    <section class="quick-links-section">
-      <h3 style="font-size:14px;margin:0 0 12px 0;color:var(--text-secondary)">快捷功能</h3>
-      <div class="quick-links">
-        <button class="quick-link" id="link-dashboard">📊 Dashboard</button>
-        <button class="quick-link" id="link-review">📚 复习模式</button>
-        <button class="quick-link" id="link-io">📦 数据管理</button>
-      </div>
-    </section>
-
     <footer class="popup-footer">
       <div class="shortcut-tip">
         <kbd>Alt</kbd> + <kbd>T</kbd> 快速处理页面
@@ -102,5 +88,6 @@
     </footer>
   </div>
 
+  <script type="module" src="./js/popup.js"></script>
 </body>
 </html>

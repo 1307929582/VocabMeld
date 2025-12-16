@@ -128,3 +128,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 定期刷新
   setInterval(loadData, 5000);
 });
+
+// 快捷入口
+document.getElementById('link-dashboard')?.addEventListener('click', () => {
+  chrome.tabs.create({ url: chrome.runtime.getURL('dashboard.html') });
+});
+
+document.getElementById('link-review')?.addEventListener('click', () => {
+  chrome.tabs.create({ url: chrome.runtime.getURL('review.html') });
+});
+
+document.getElementById('link-io')?.addEventListener('click', () => {
+  chrome.tabs.create({ url: chrome.runtime.getURL('import-export.html') });
+});
+
+// 主题初始化
+const savedTheme = localStorage.getItem('vocabmeld-theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);

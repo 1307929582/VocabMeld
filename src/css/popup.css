@@ -334,3 +334,41 @@ kbd {
   background: var(--bg-primary);
   border-color: var(--border);
 }
+
+/* 快捷入口 */
+.quick-links-section {
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.quick-link {
+  padding: 12px 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.quick-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.quick-link:active {
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .quick-links-section {
+  border-color: var(--border);
+}
