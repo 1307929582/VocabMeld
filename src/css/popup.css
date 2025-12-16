@@ -310,3 +310,27 @@ kbd {
   font-size: 11px;
   color: var(--text-secondary);
 }
+
+/* 深色模式变量 */
+[data-theme="dark"] {
+  --bg-primary: #1A1D21;
+  --bg-secondary: #25282D;
+  --text-primary: #EAEAEA;
+  --text-secondary: #A0A0A0;
+  --border: #3A3D42;
+  --primary: #5A9BE4;
+}
+
+[data-theme="dark"] body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .popup-container {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .stat-card {
+  background: var(--bg-primary);
+  border-color: var(--border);
+}

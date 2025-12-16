@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VocabMeld 设置</title>
   <link rel="stylesheet" href="./css/options.css">
+  <link rel="stylesheet" href="./css/commercial.css">
 </head>
 <body>
   <div class="options-container">
@@ -13,6 +14,7 @@
       <div class="sidebar-header">
         <img src="../public/icons/icon48.png" alt="VocabMeld" class="sidebar-logo">
         <h1>VocabMeld</h1>
+        <button id="theme-toggle-btn" class="theme-toggle">🌙</button>
         <span class="version">v1.0.0</span>
       </div>
       <nav class="sidebar-nav">
@@ -395,25 +397,67 @@ another-site.org"></textarea>
         </div>
       </section>
 
+
+      <!-- ========== API 配置管理 ========== -->
+      <section id="api" class="settings-section">
+        <div class="section-header">
+
+<!-- API配置Modal -->
+<dialog id="api-profile-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modal-title">添加API配置</h3>
+      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+    </div>
+    <form id="api-profile-form">
+      <input type="hidden" id="profile-id">
+      <div class="form-group">
+        <label>配置名称</label>
+        <input type="text" id="profile-name" class="form-input" placeholder="例如: DeepSeek主用" required>
+      </div>
+      <div class="form-group">
+        <label>Provider</label>
+        <select id="profile-provider" class="form-input">
+          <option value="deepseek">DeepSeek</option>
+          <option value="openai">OpenAI</option>
+          <option value="moonshot">Moonshot</option>
+          <option value="groq">Groq</option>
+          <option value="ollama">Ollama</option>
+          <option value="custom">自定义</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>API Endpoint</label>
+        <input type="text" id="profile-endpoint" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label>Model</label>
+        <input type="text" id="profile-model" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label>API Key</label>
+        <input type="password" id="profile-api-key" class="form-input" placeholder="输入API密钥" required>
+      </div>
+      <div class="form-group">
+        <label><input type="checkbox" id="profile-enabled" checked> 启用此配置</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modal-cancel-btn" class="btn btn--secondary">取消</button>
+        <button type="submit" class="btn btn--primary">保存</button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+          <h2>API 配置管理</h2>
+          <p>管理多个AI服务配置，支持智能切换和自动容错</p>
+        </div>
+        <div id="api-profiles-grid" class="api-profiles-grid"></div>
+        <button id="add-new-api-btn" class="btn btn--primary" style="margin-top:16px">+ 添加API配置</button>
+      </section>
+
       <!-- 设置页面现在自动保存，无需手动保存按钮 -->
     </main>
   </div>
 
   <script type="module" src="./js/options.js"></script>
-</body>
-</html>
-
-<!-- API管理section已在原options.html中 -->
-<section id="api-section" class="settings-section">
-  <div class="section-header">
-    <h2>API 配置管理</h2>
-    <p>管理多个API配置，支持自动切换</p>
-  </div>
-  
-  <div class="api-management-simple">
-    <button id="add-api-btn" class="btn btn--primary">+ 添加API配置</button>
-    <div id="api-list-simple"></div>
-  </div>
-</section>
-
-<script type="module" src="./js/api-management.js"></script>

@@ -395,6 +395,17 @@ another-site.org"></textarea>
         </div>
       </section>
 
+
+      <!-- ========== API 配置管理 ========== -->
+      <section id="api" class="settings-section">
+        <div class="section-header">
+          <h2>API 配置管理</h2>
+          <p>管理多个AI服务配置，支持智能切换和自动容错</p>
+        </div>
+        <div id="api-profiles-grid" class="api-profiles-grid"></div>
+        <button id="add-new-api-btn" class="btn btn--primary" style="margin-top:16px">+ 添加API配置</button>
+      </section>
+
       <!-- 设置页面现在自动保存，无需手动保存按钮 -->
     </main>
   </div>

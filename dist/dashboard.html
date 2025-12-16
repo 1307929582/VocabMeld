@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VocabMeld Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script type="module" crossorigin src="./js/dashboard.js"></script>
+  <link rel="modulepreload" crossorigin href="./js/chunks/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./js/chunks/storage-DOvsNEMd.js">
+  <link rel="stylesheet" crossorigin href="./assets/commercial-utKeKVah.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>学习Dashboard</h1>
+      <button id="theme-toggle" class="btn btn--secondary">🌙 深色模式</button>
+    </header>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <h4>已学会</h4>
+        <p class="stat-value" id="stat-learned">0</p>
+        <p class="stat-label">mastered words</p>
+      </div>
+      <div class="stat-card">
+        <h4>需记忆</h4>
+        <p class="stat-value" id="stat-memorize">0</p>
+        <p class="stat-label">to memorize</p>
+      </div>
+      <div class="stat-card">
+        <h4>今日新词</h4>
+        <p class="stat-value" id="stat-today">0</p>
+        <p class="stat-label">today</p>
+      </div>
+      <div class="stat-card">
+        <h4>缓存命中</h4>
+        <p class="stat-value" id="stat-cache-rate">0%</p>
+        <p class="stat-label">cache hit rate</p>
+      </div>
+    </section>
+
+    <section class="chart-section">
+      <h3>学习趋势</h3>
+      <canvas id="learning-chart"></canvas>
+    </section>
+  </div>
+
+</body>
+</html>

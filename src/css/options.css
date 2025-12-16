@@ -891,3 +891,37 @@ input:checked + .toggle-slider:before {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* 深色模式 */
+[data-theme="dark"] {
+  --bg-primary: #1A1D21;
+  --bg-secondary: #25282D;
+  --text-primary: #EAEAEA;
+  --text-secondary: #A0A0A0;
+  --border: #3A3D42;
+}
+
+[data-theme="dark"] body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .options-container {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .sidebar {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .settings-section {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .form-input {
+  background: var(--bg-primary);
+  border-color: var(--border);
+  color: var(--text-primary);
+}

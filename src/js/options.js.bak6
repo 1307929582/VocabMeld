@@ -7,10 +7,6 @@ import { storage } from './core/storage.js';
 import { API_PRESETS, CEFR_LEVELS } from './core/config.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-// ============ 主题系统 ============
-const savedTheme = localStorage.getItem("vocabmeld-theme") || "light";
-document.documentElement.setAttribute("data-theme", savedTheme);
-
   // 防抖保存函数
   let saveTimeout;
   function debouncedSave(delay = 500) {
